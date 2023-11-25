@@ -1,4 +1,0 @@
-[submodule "scripts"]
-	path = scripts
-	url = https://github.com/m-c-frank/justthoughts
-	branch= scripts

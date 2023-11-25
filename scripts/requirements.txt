@@ -1,2 +1,0 @@
-openai
-langchain==0.0.339
