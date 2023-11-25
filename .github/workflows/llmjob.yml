@@ -1,0 +1,23 @@
+name: run llmjob
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  solve-issue:
+    runs-on: ubuntu-latest
+    if: github.event.label.name == 'llmjob'
+    steps:
+      - name: execute llmjob python script
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          curl -o llmjob.sh "https://raw.githubusercontent.com/m-c-frank/justthoughts/scripts/llmjob.sh"
+          bash llmjob.sh ${{ github.event.issue.number }}
+
